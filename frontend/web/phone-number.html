@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phone Verification</title>
+
+  <link rel="stylesheet" href="./css/sms_verification.css" />
+
+  <script src="./js/jwt.js" data-behavior="public" data-redirect="dashboard.html" defer></script>
+
+  <link rel="prefetch" href="./dashboard.html" />
+</head>
+<body>
+  <div class="container">
+    <h1>אימות טלפוני</h1>
+
+    <!-- Step 1: Phone Input -->
+    <form id="phone-form" novalidate>
+      <label for="phone">מספר טלפון</label>
+      <div class="phone-input-group">
+        <span class="phone-prefix">+972</span>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder=""
+          pattern="^\d{2}\s?\d{3,4}\s?\d{3,4}$"
+          inputmode="tel"
+          required
+          autocomplete="tel"
+          aria-describedby="error-msg"
+        />
+      </div>
+      <div id="error-msg" class="error"></div>
+      <button type="submit">שלח קוד</button>
+    </form>
+
+
+    <!-- Step 2: Code Input -->
+<form id="code-form" novalidate class="hidden">
+<!-- <form id="code-form" novalidate> -->
+  <div class="code-input-group">
+    <input type="text" maxlength="1" class="code-box" id="code-box-0" inputmode="numeric" />
+    <input type="text" maxlength="1" class="code-box" id="code-box-1" inputmode="numeric" />
+    <input type="text" maxlength="1" class="code-box" id="code-box-2" inputmode="numeric" />
+    <input type="text" maxlength="1" class="code-box" id="code-box-3" inputmode="numeric" />
+    <input type="text" maxlength="1" class="code-box" id="code-box-4" inputmode="numeric" />
+    <input type="text" maxlength="1" class="code-box" id="code-box-5" inputmode="numeric" />
+  </div>
+  <div id="code-error-msg" class="error"></div>
+
+  <!-- Resend code button nicely spaced -->   
+  <button type="button" id="resend-code-btn">שלח קוד שוב</button>
+  <div id="resend-error-msg" class="error" aria-live="polite"></div>
+
+  <!-- Verify code button -->
+  <button type="submit">אמת קוד</button>
+</form>
+
+
+    <div id="success-msg" class="success hidden" role="status"></div>
+  </div>
+<script>
+  const boxes = document.querySelectorAll('.code-box');
+
+  boxes.forEach((box, idx) => {
+    // Auto-focus logic
+    box.addEventListener('input', () => {
+      if (box.value.length === 1 && idx < boxes.length - 1) {
+        boxes[idx + 1].focus();
+      }
+    });
+
+    box.addEventListener('keydown', (e) => {
+      if (e.key === "Backspace" && !box.value && idx > 0) {
+        boxes[idx - 1].focus();
+      }
+    });
+
+    // Disable paste, copy, cut, right-click
+    ['paste', 'copy', 'cut', 'contextmenu'].forEach(eventName => {
+      box.addEventListener(eventName, e => e.preventDefault());
+    });
+  });
+</script>
+
+  <script src="./js/phone-number.js" defer></script>
+</body>
+</html>

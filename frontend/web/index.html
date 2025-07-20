@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+
+  <!-- css and js-->
+  <link rel="stylesheet" href="./css/sign_in.css" />
+  <script src="./js/sign_in.js" defer></script>
+  <script src="./js/jwt.js" data-behavior="public" data-redirect="dashboard.html" defer></script>
+
+  <!-- preload of a smoother transion -->
+  <link rel="prefetch" href="./dashboard.html" />
+  <link rel="prefetch" href="./sign_up.html" />
+
+  <!-- Google Sign-In -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">ברוך הבא</h1>
+
+    <!-- Messages -->
+    <div id="success-message" class="message success hidden"></div>
+    <div id="error-message" class="message error hidden"></div>
+
+    <!-- Login Form -->
+    <form id="signInForm" class="login-form" novalidate>
+      <input type="email" id="email" placeholder="אימייל" required />
+      <input type="password" id="password" placeholder="סיסמה" required />
+      <button type="submit">התחבר</button>
+    </form>
+
+    <!-- Divider -->
+    <div class="divider"><span>או</span></div>
+
+    <!-- Google Sign-In Button -->
+    <div class="google-signin-wrapper">
+      <div id="g_id_onload"
+           data-client_id="846963901431-6f5t495o8a69ftodokckm43kdn9hkk3f.apps.googleusercontent.com"
+           data-callback="handleCredentialResponse">
+      </div>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-size="large"
+           data-theme="outline"
+           data-text="sign_in_with"
+           data-shape="rectangular"
+           data-logo_alignment="left">
+      </div>
+    </div>
+
+    <!-- Sign Up Link -->
+    <p class="footer-text">
+      אין לך חשבון? <a href="./sign_up.html" id="signUpLink">הרשם</a>
+    </p>
+  </div>
+</body>
+</html>

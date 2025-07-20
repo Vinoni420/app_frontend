@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./js/jwt.js" data-behavior="protected" data-redirect="./index.html" defer></script>
+
+</head>
+<body>
+    <script>
+        function logout() {
+            localStorage.removeItem('jwt_token');
+            window.location.href = "./index.html"
+        }
+    </script>
+    <button onclick="logout()">log out</button>
+</body>
+</html>

@@ -1,0 +1,46 @@
+1. Paste this (or change as you like) in .env in backend/:
+
+DATABASE_URL=postgres://username:password@localhost/db_name
+
+2. Open PostgresSQL CLI with sudo privliges:
+sudo -u postgres psql
+
+3. Create the DB:
+
+CREATE USER username WITH PASSWORD 'password';
+CREATE DATABASE db_name OWNER username;
+GRANT ALL PRIVILEGES ON DATABASE db_name TO username;
+
+4. Create the 'users' table in db:
+\c db_name
+CREATE TABLE users (
+  uuid UUID PRIMARY KEY,                             -- unique ID
+  email TEXT NOT NULL UNIQUE,                        -- must be unique
+  email_verified BOOLEAN NOT NULL DEFAULT false,     -- true if verified
+  name TEXT NOT NULL,                                -- optional
+  password_hash TEXT,                                -- optional (for Google users)
+  google_sub TEXT UNIQUE,                            -- optional, but must be unique if present
+  phone_num TEXT NOT NULL UNIQUE,                    -- optional, but must be unique if present
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),     -- time of account creation
+  last_seen_at TIMESTAMPTZ,                          -- optional last-seen timestamp
+  picture TEXT                                       -- optional avatar URL
+);
+ALTER TABLE users OWNER TO username;
+
+5. Create 'user_data' view:
+CREATE VIEW user_data AS
+SELECT
+  uuid, email, email_verified, name, password_hash, google_sub,
+  phone_num, created_at, last_seen_at, picture
+FROM users;
+
+6. Manually add a user to table for testing:
+INSERT INTO users (uuid, email, name, password_hash, google_sub, phone_num)
+VALUES (
+  1f1a2b4c-34c8-414c-a017-d6426474d925,
+  email@gmail.com,
+  your-name,
+  password-hash,
+  google-sub,
+  0502354689,
+)

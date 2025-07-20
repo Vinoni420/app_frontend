@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="הירשמו כדי למצוא עבודה או לפרסם משרות פנויות." />
+  <title>יצירת חשבון</title>
+
+  <!-- CDN Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MShnMU9CMzT+JmAdLzC0Z07U8TCRuE7PiEAX8YQmBaL1Ka7eC0U/OZL7vFeRf8w3OZofF4VZ6c1YaaHxQTT1NQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
+  <!-- css -->
+  <link rel="stylesheet" href="./css/sign_up.css" />
+
+  <script src="./js/jwt.js" data-behavior="public" data-redirect="dashboard.html" defer></script>
+
+  <!-- preload of a smoother transion -->
+  <link rel="prefetch" href="./index.html">
+
+  <!-- Google Sign-In & reCAPTCHA -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+  <div class="main-layout">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="left-panel-content">
+        <h1>התחברו לאנשים הנכונים</h1>
+        <p>הצטרפו לפלטפורמה שמחברת בין מעסיקים לעובדים בשטח. פשוט, מקצועי ויעיל.</p>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="signup-box">
+        <h2>יצירת חשבון חדש</h2>
+        <form id="signup-form" novalidate>
+          
+          <!-- Form Fields -->
+          <div class="form-field">
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" required />
+            <div id="email-error" class="error-message"></div>
+          </div>
+          
+          <div class="form-field password-wrapper">
+            <label for="password">סיסמה</label>
+            <div class="password-field">
+              <input type="password" id="password" name="password" required />
+              <button type="button" id="toggle-password" aria-label="הצג סיסמה">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <div id="password-error" class="error-message"></div>
+          </div>
+          
+          <div class="form-field">
+            <label for="name">שם מלא</label>
+            <input type="text" id="name" name="name" required />
+            <div id="name-error" class="error-message"></div>
+          </div>
+
+          <!-- reCAPTCHA -->
+          <div class="captcha-container">
+            <div class="g-recaptcha" data-sitekey="6LdGv4UrAAAAAC75C9X1BY1BE70xcZpo_Lghxn8Q"></div>
+          </div>
+          <div id="captcha-error" class="error-message"></div>
+
+          <!-- Server Error -->
+          <div id="server-error-container" class="error-message"></div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-button">הרשמה</button>
+        </form>
+
+        <!-- Separator -->
+        <div class="separator">
+          <span>או</span>
+        </div>
+
+        <!-- Google Sign-Up Button -->
+        <div id="google-signin-button"></div>
+
+        <!-- Login Redirect -->
+        <div class="login-redirect">
+          <span>כבר יש לך חשבון? <a href="./index.html">התחבר</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script src="./js/jwt.js" data-behavior="public" data-redirect="./dashboard.html" defer></script>
+  <script defer src="./js/google_sign_up.js"></script>
+  <script type="module" src="./js/sign_up.js"></script>
+
+  <!-- Flatpickr -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</body>
+</html>

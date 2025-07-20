@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Global Styles & Resets
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Base & Typography
+   ========================================================================== */
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f4f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  color: #444;
+  margin-bottom: 0.5rem;
+  text-align: right; /* RTL support */
+}
+
+/* ==========================================================================
+   Container
+   ========================================================================== */
+
+.container {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+form {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  height: auto;
+  overflow: hidden;
+}
+
+form.hidden {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Input Fields
+   ========================================================================== */
+
+input {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  max-width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0077ff;
+  box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+}
+
+/* Remove browser-specific autofill styles */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+form button {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 1rem;
+  padding: 0.9rem 2rem;
+  background-color: #0077ff;
+  color: #fff;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+form button:hover {
+  background-color: #005fcc;
+}
+
+#resend-code-btn {
+  background-color: #444;
+}
+
+#resend-code-btn:hover {
+  background-color: #222;
+}
+
+/* ==========================================================================
+   Specific Components
+   ========================================================================== */
+
+/* Phone Input Group */
+.phone-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 0.75rem;
+  background-color: #fff;
+  height: 48px;
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.phone-input-group:focus-within {
+  border-color: #0077ff;
+  box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+}
+
+.phone-prefix {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.phone-input-group input {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  flex: 1;
+  padding: 0.75rem 0;
+  margin: 0;
+  height: 100%;
+  min-width: 0; /* Allow shrinking */
+}
+
+/* Code Input Group */
+.code-input-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap; /* Wrap on narrow screens */
+  padding-bottom: 0.3rem;
+  width: 100%;
+}
+
+.code-box {
+  width: 50px;
+  height: 64px;
+  font-size: 2rem;
+  text-align: center;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.code-box:focus {
+  border-color: #0077ff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.3);
+}
+
+/* ==========================================================================
+   Messages & Utilities
+   ========================================================================== */
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+  min-height: 1.2em;
+  text-align: center;
+}
+
+.success {
+  color: green;
+  font-size: 1em;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 1.5rem;
+  }
+
+  form button {
+    max-width: 100%; /* Full width on small screens */
+  }
+
+  .code-box {
+    width: 48px;
+    height: 56px;
+    font-size: 1.6rem;
+  }
+
+  .code-input-group {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  form button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .code-box {
+    width: 32px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .code-input-group {
+    gap: 0.5rem;
+  }
+}

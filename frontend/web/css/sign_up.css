@@ -1,0 +1,267 @@
+/* =========================
+   Base Reset & RTL Support
+========================= */
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --link-color: #006ceb;
+  --background-color: #f3f5f8;
+  --white-color: #fff;
+  --text-color: #333;
+  --text-light-color: #555;
+  --error-color: #d9534f;
+  --border-color: #ccc;
+  --box-shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background-color);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevents scrollbars on the body */
+}
+
+/* =========================
+   Layout Structure
+========================= */
+.main-layout {
+  display: flex;
+  width: 1100px;
+  height: 750px; /* Adjusted height for new element */
+  background-color: var(--white-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-strong);
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-panel {
+  background: linear-gradient(to bottom right, var(--primary-color), #3f87ff);
+  color: var(--white-color);
+  align-items: center;
+  text-align: center;
+}
+
+.left-panel-content {
+  max-width: 400px;
+}
+
+.left-panel h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.left-panel p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.right-panel {
+  align-items: center;
+}
+
+.signup-box {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-box h2 {
+  font-size: 1.9em;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   Form, Fields & Inputs
+========================= */
+#signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 18px; /* Reduced margin */
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--text-light-color);
+  text-align: right;
+}
+
+input {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+input.has-error {
+  border-color: var(--error-color);
+}
+
+/* =========================
+   Password Toggle
+========================= */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-left: 45px;
+}
+
+#toggle-password {
+  position: absolute;
+  left: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light-color);
+  font-size: 1.1em;
+  padding: 8px 12px;
+  z-index: 2;
+}
+
+/* =========================
+   reCAPTCHA Integration
+========================= */
+.captcha-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 5px 0;
+}
+
+.g-recaptcha {
+  transform: scale(0.98);
+  transform-origin: center;
+}
+
+/* =========================
+   Error Messages
+========================= */
+.error-message {
+  color: var(--error-color);
+  font-size: 0.85em;
+  min-height: 18px;
+  padding-top: 3px;
+  text-align: right;
+}
+
+#server-error-container,
+#captcha-error {
+  text-align: center;
+}
+
+/* =========================
+   Submit Button
+========================= */
+.submit-button {
+  width: 100%;
+  padding: 13px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 5px;
+}
+
+.submit-button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+/* =========================
+   Separator
+========================= */
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 18px 0;
+  color: #888;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.separator span {
+  padding: 0 15px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* =========================
+   Google Sign-In Button
+========================= */
+#google-signin-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* =========================
+   Login Redirect Link
+========================= */
+.login-redirect {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.95em;
+  color: var(--text-light-color);
+}
+
+.login-redirect a {
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+.login-redirect a:hover {
+  text-decoration: underline;
+}

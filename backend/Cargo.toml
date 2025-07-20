@@ -1,0 +1,27 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = { version="0.8", features = ["macros"] }
+axum-extra = { version = "0.10", features = ["typed-header"] }
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.5", features = ["cors"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+sqlx = { version = "0.8", features = ["postgres", "runtime-tokio-rustls", "macros", "uuid", "time"] }
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+rand = "0.9"
+dotenv = "0.15"
+argon2 = "0.5.3"
+jsonwebtoken = "9"
+time = { version = "0.3", features = ["serde"] }
+google-jwt-verify = "0.3"
+tracing = "0.1"
+deadpool-redis = "0.14"
+anyhow = "1.0"
+chrono = "0.4"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+resend-rs = "0.15.0"
